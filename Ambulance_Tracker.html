@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:silver;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #ff4c4c;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            transition: transform 0.2s;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        .navbar {
+            background-color: #0056b3; /* Blue color */
+            overflow: hidden;
+        }
+        .navbar h2 {
+            display: inline;
+            margin: 0;
+            padding: 14px 20px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: #003d7a; /* Darker blue */
+            min-width: 160px;
+            z-index: 1;
+        }
+        .navbar h2:hover .dropdown {
+            display: block;
+        }
+        .dropdown a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #1e577d; /* Blue color */
+        }
+        .main-content {
+            padding: 20px;
+            flex: 1;
+        }
+        .date-weather, .hospitals {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .tracker {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            animation: slideIn 1s;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #ff4c4c; /* Red for header */
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            background-color: #0056b3; /* Blue color */
+            color: white;
+            padding: 10px 0;
+        }
+        .contact-info {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .images img {
+            width: 30%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .images img:hover {
+            transform: scale(1.05);
+        }
+        .hospital-table {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="logo">🚑 Ambulance Tracker</h1>
+</header>
+
+<div class="navbar">
+    <h2>Menu
+        <div class="dropdown">
+            <a href="#">Home</a>
+            <a href="#">Track Ambulance</a>
+            <a href="#">Emergency Contacts</a>
+            <a href="#">FAQs</a>
+        </div>
+    </h2>
+</div>
+
+<div class="main-content">
+    <div class="date-weather">
+        <h2>Current Date and Weather</h2>
+        <p id="date"><input type="datetime-local"></p>
+        <p id="weather"></p>
+    </div>
+   
+    <div class="tracker">
+        <h2>Current Ambulance Status</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ambulance ID</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>ETA</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A001</td>
+                    <td>Noida Sector 52</td>
+                    <td>En Route</td>
+                    <td>5 mins</td>
+                    <td>+91 8769236810</td>
+                </tr>
+                <tr>
+                    <td>A002</td>
+                    <td>Peeragarhi</td>
+                    <td>Available</td>
+                    <td>N/A</td>
+                    <td>+91 7562840318</td>
+                </tr>
+                <tr>
+                    <td>A003</td>
+                    <td>Kashmere Gate</td>
+                    <td>En Route</td>
+                    <td>8 mins</td>
+                    <td>+91 9520736149</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="images">
+        <img src="Amb 1.avif" alt="Ambulance 1">
+        <img src="Amb 2.jpg" alt="Ambulance 2">
+        <img src="Amb 3.webp" alt="Ambulance 3">
+    </div>
+
+    <div class="hospitals">
+        <h2>Nearby Hospitals</h2>
+        <table class="hospital-table">
+            <thead>
+                <tr>
+                    <th>Hospital Name</th>
+                    <th>Location</th>
+                    <th>Distance</th>
+                    <th>Available Beds</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shivalik Medical Centre</td>
+                    <td>Hoshiyarpur, Sector 51</td>
+                    <td>2.5 km</td>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <td>Phero Hospital</td>
+                    <td>Metro pillar no.291, Paschim Enclave</td>
+                    <td>3.2 km</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Ram Krishna Hospital</td>
+                    <td>277, Ram Lal Chandhok Marg</td>
+                    <td>1.8 km</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>If you need immediate assistance, please call:</p>
+        <p><strong>Emergency Number:</strong> 911</p>
+        <p><strong>Support Email:</strong> support@ambulancetracker.com</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2024 Ambulance Tracker System</p>
+</div>
+
+<script>
+    // Display current date
+    const date = new Date();
+    document.getElementById("date").innerText = Today's Date: ${date.toLocaleDateString()};
+
+    // Fetch weather data (placeholder - replace with real API)
+    function fetchWeather() {
+        // Mock weather data
+        const weatherData = {
+            location: "Your City",
+            temperature: "20°C",
+            condition: "Clear"
+        };
+        document.getElementById("weather").innerText =
+            Weather in ${weatherData.location}: ${weatherData.temperature}, ${weatherData.condition};
+    }
+    fetchWeather();
+</script>
+
+</body>
+</html>
